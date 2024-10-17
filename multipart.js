@@ -48,7 +48,7 @@ exports.Parse = function(multipartBodyBuffer,boundary){
 	var info = ''; var state=0; var buffer=[];
 	var allParts = [];
 
-	for(i=0;i<multipartBodyBuffer.length;i++){
+	for(var i=0;i<multipartBodyBuffer.length;i++){
 		var oneByte = multipartBodyBuffer[i];
 		var prevByte = i > 0 ? multipartBodyBuffer[i-1] : null;
 		var newLineDetected = ((oneByte == 0x0a) && (prevByte == 0x0d)) ? true : false;
@@ -105,7 +105,7 @@ exports.Parse = function(multipartBodyBuffer,boundary){
 exports.getBoundary = function(header){
 	var items = header.split(';');
 	if(items)
-		for(i=0;i<items.length;i++){
+		for(var i=0;i<items.length;i++){
 			var item = (new String(items[i])).trim();
 			if(item.indexOf('boundary') >= 0){
 				var k = item.split('=');
